@@ -33,7 +33,7 @@ const collectionSlice = createSlice({
             localStorage.removeItem('collection')
         },
         addedToast: () => {
-            toast.success('Added to Collection ✅', {
+            toast.success('Added to Collection', {
                 position: "top-center",
                 autoClose: 2000,
                 hideProgressBar: false,
