@@ -53,8 +53,19 @@ const ResultCard = ({ item }) => {
                     {mediaContent[item.type]}
                 </div>
                 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                {/* Always visible mobile save button */}
+                <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    onClick={(e) => addToCollection(e, item)}
+                    className="md:hidden absolute top-2 right-2 p-2 bg-blue-600/90 rounded-full text-white z-10"
+                    aria-label="Save to collection"
+                    title="Save to collection"
+                >
+                    <FiSave className="w-4 h-4" />
+                </motion.button>
+
+                {/* Desktop overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                     <div className="flex justify-between items-center">
                         <h3 className="text-white font-medium text-sm truncate">
                             {item.title}
@@ -64,7 +75,7 @@ const ResultCard = ({ item }) => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={(e) => addToCollection(e, item)}
-                                className="p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition-colors"
+                                className="hidden md:flex items-center justify-center p-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition-colors"
                                 aria-label="Save to collection"
                                 title="Save to collection"
                             >
